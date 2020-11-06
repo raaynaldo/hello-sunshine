@@ -10,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "static/header"  %>
+    <main class="container-fluid"> <!--bootstrap-->
+      <%= yield %>
+    </main>
   </body>
 </html>
