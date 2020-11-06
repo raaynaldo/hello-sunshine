@@ -1,1 +1,20 @@
-<h1>Company Index</h1>
+<h1>Check out the Companies!</h1>
+
+<ul>
+<% @companies.each do |company| %>
+   <div> <li><%= link_to company.name, company_path(company.id)%> </li></div>
+<% end %>
+</ul>
+
+  
+  <%# <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div> %>

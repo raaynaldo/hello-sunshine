@@ -1,1 +1,8 @@
-<h1>Teacher Index</h1>
+<h1>Get to know the Teachers!</h1>
+
+
+<ul>
+<% @teachers.each do |teacher|%>
+    <div><li><%= link_to teacher.name, teacher_path(teacher.id)%></li></div>
+<% end %>
+</ul>
