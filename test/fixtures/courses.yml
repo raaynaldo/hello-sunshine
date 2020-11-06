@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  course_type: MyString
+  date: 2020-11-06 12:46:34
+  min_age: 1
+  max_age: 1
+  teacher_id: 1
+  location: MyString
+  picture: MyString
+  max_student: 1
+
+two:
+  title: MyString
+  course_type: MyString
+  date: 2020-11-06 12:46:34
+  min_age: 1
+  max_age: 1
+  teacher_id: 1
+  location: MyString
+  picture: MyString
+  max_student: 1
