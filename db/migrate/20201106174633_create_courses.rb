@@ -4,6 +4,7 @@ class CreateCourses < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :course_type
       t.datetime :date
+      t.float :price
       t.integer :min_age
       t.integer :max_age
       t.integer :max_student
