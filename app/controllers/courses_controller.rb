@@ -22,4 +22,15 @@ class CoursesController < ApplicationController
 
     def destroy
     end
+
+    def register
+        CourseRegistration.create(course_id: params[:id], student_id: current_user.id)
+        redirect_to course_path(params[:id])
+    end
+
+    def unregister
+        cr = CourseRegistration.where(course_id: params[:id], student_id: current_user.id).first
+        cr.destroy
+        redirect_to course_path(params[:id])
+    end
 end
