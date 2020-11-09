@@ -1,1 +1,64 @@
 <h1>Course New</h1>
+
+
+<%= form_with url: "/" do %>
+    label : <%= label_tag :title %> <br>
+    text_field : <%= text_field_tag :title %> <br>
+    radio_button : <%= radio_button_tag :type, "music" %> <br>
+    check_box : <%= check_box_tag :type %> <br>
+
+    text_area : <%= text_area_tag(:message, "Hi, nice site", size: "24x6") %> <br>
+    password_field : <%= password_field_tag(:password) %> <br>
+    hidden_field : <%= hidden_field_tag(:parent_id, "5") %> <br>
+    search_field : <%= search_field(:user, :name) %> <br>
+    date_field : <%= date_field(:user, :born_on) %> <br>
+    datetime_field : <%= datetime_local_field(:user, :graduation_day) %> <br>
+    time_field : <%= time_field(:task, :started_at) %> <br>
+    color_field : <%= color_field(:user, :favorite_color) %> <br>
+    number_field : <%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %> <br>
+    range_filed : <%= range_field(:product, :discount, in: 1..100) %> <br>
+    select_date : <%= select_date Date.today, prefix: :start_date %> <br>
+    time_zone : <%= time_zone_select(:person, :time_zone) %> <br>
+    upload_file : <%= file_field_tag 'picture' %> <br>
+<% end %>
+
+<!-->
+<h2>form_with using model</h2>
+<%= form_with( 
+    model: @course, 
+    method: "post", #("get", "post")
+    scope: "course",
+    url: courses_path,
+    id: "course_id", 
+    class: "course_class",
+    html: {name: "course"}) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.radio_button :type, "music" %>
+    <%= f.check_box :type %>
+    <%= f.submit %>
+<% end %>
+
+
+<hr>
+<h2>form_with without model</h2>
+<%= form_with url: courses_path do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
+<% end %>
+
+
+<hr>
+<h2>form_for</h2>
+<%= form_for @course do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+<% end %>
+  
+
+<hr>
+<h2>form_tag</h2>
+<%= form_tag courses_path do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title %>
+<% end %>
