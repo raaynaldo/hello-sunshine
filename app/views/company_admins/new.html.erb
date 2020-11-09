@@ -1,0 +1,38 @@
+<h1>Create Company</h1>
+<%= form_with model: @company_admin, class: "row" do |f| %>
+    <div class= "col-6">
+        <div class="form-group">
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :username %>
+            <%= f.search_field :username, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation, "Confirm Password" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+    </div>
+    <div class= "col-6">
+        <%= f.fields_for :company, @company_admin.company do |company_form| %>
+            <div class="form-group">
+                <%= company_form.label :name, "Company Name" %>
+                <%= company_form.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+                <%= company_form.label :description, "Company Description" %>
+                <%= company_form.text_area :description, class: "form-control", rows: "4" %>
+            </div>
+        <% end %>
+    </div>
+    <%= f.submit "Create User", class: "btn btn-primary" %>
+<% end %>

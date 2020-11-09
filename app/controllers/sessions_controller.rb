@@ -7,10 +7,10 @@ class SessionsController < ApplicationController
     # check type user type 
     ##  "0" == student
     ##  "1" == teacher
-    if params[:type] == "0"
+    if params[:type] == UserType.student
       user = Student.find_by(username: login_params[:username])
     else
-      user = Teacher.find_by(username: login_params[:username])
+      user = CompanyAdmin.find_by(username: login_params[:username])
     end
 
     # Check if user exist and the password is correct.
@@ -36,10 +36,10 @@ class SessionsController < ApplicationController
   end
 
   def render_view
-    if params[:type] == "0"
+    if params[:type] == UserType.student
       render :student_login
     else
-      render :student_login
+      render :company_login
     end
   end
 end

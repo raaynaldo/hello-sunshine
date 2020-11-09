@@ -3,10 +3,11 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def current_user
-        if session[:type] == "0"
+        # UserType => from config/initializers/my_constants.rb
+        if session[:type] == UserType.student
             @current_user ||= Student.find(session[:user_id]) if session[:user_id]
         else
-            @current_user ||= Teacher.find(session[:user_id]) if session[:user_id]
+            @current_user ||= CompanyAdmin.find(session[:user_id]) if session[:user_id]
         end
         @current_user
     end

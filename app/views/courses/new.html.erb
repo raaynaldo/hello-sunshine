@@ -11,10 +11,17 @@
     password_field : <%= password_field_tag(:password) %> <br>
     hidden_field : <%= hidden_field_tag(:parent_id, "5") %> <br>
     search_field : <%= search_field(:user, :name) %> <br>
+    telephone_field : <%= telephone_field(:user, :phone) %> <br>
     date_field : <%= date_field(:user, :born_on) %> <br>
     datetime_field : <%= datetime_local_field(:user, :graduation_day) %> <br>
-    time_field : <%= time_field(:task, :started_at) %> <br>
+    datetime_local_field : <%= datetime_local_field(:user, :graduation_day) %> <br>
+    month_field : <%= month_field(:user, :birthday_month) %> <br>
+    week_field : <%= week_field(:user, :birthday_week) %> <br>
+    url_field : <%= url_field(:user, :homepage) %> <br>
+    email_field : <%= email_field(:user, :address) %> <br>
+
     color_field : <%= color_field(:user, :favorite_color) %> <br>
+    time_field : <%= time_field(:task, :started_at) %> <br>
     number_field : <%= number_field(:product, :price, in: 1.0..20.0, step: 0.5) %> <br>
     range_filed : <%= range_field(:product, :discount, in: 1..100) %> <br>
     select_date : <%= select_date Date.today, prefix: :start_date %> <br>

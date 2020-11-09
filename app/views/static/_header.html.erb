@@ -23,10 +23,12 @@
       </li>
       <% unless current_user %>
         <li class="nav-item">
-          <%= link_to "Student Log in", login_path("0"), class: "nav-link" %>
+          <%# UserType => from config/initializers/my_constants.rb %>
+          <%= link_to "Student Log in", login_path(UserType.student), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Teacher Log in", login_path("1"), class: "nav-link" %>
+          <%# UserType => from config/initializers/my_constants.rb %>
+          <%= link_to "Company Log in", login_path(UserType.company_admin), class: "nav-link" %>
         </li>
       <% end %>
       <% if current_user %>

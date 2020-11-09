@@ -12,6 +12,14 @@
   <body>
     <%= render partial: "static/header"  %>
     <main class="container"> <!--bootstrap-->
+      <% if notice %>
+        <%= notice %>
+      <% end %>
+      
+      <% if alert %>
+        <%= alert %>
+      <% end %>
+      
       <%= yield %>
     </main>
   </body>
