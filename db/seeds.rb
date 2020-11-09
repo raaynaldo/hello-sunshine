@@ -56,7 +56,7 @@ puts "Courses"
                    max_age: 7,
                    teacher_id: Teacher.all.sample.id,
                    location: ['zoom room', 'private zoom room', 'live'].sample,
-                   picture: '',
+                   picture: ['https://unsplash.com/photos/bNUGJD3gO94','https://images.unsplash.com/photo-1577877777751-3f1ec20a0715?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60', 'https://thumbs.dreamstime.com/b/table-top-view-decoration-kid-toys-develop-background-concept-flat-lay-accessories-baby-to-play-items-child-modern-155761164.jpg'].sample,
                    max_student: 15)
 end
 
