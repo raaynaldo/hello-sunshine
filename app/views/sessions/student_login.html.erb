@@ -1,0 +1,22 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<%= form_for :login do |f|%>
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
+    <div>
+        <%= link_to "Create a new student", new_student_path %>
+    </div>
+    <div>
+        <%= f.submit "Log In" %>
+    </div>
+<% end %>

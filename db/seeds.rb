@@ -11,6 +11,7 @@ Course.destroy_all
 Teacher.destroy_all
 Company.destroy_all
 CourseRegistration.destroy_all
+CompanyAdmin.destroy_all
 
 puts "Students"
 
@@ -22,12 +23,25 @@ puts "Students"
 
 end
 
-
 puts 'Companies'
 
 little_rockers = Company.create(name:'Little Rockers', description: "Making big and little shake their sillies out till they can't no more!")
 silly_sunflowers = Company.create(name:'Silly Sunflowers', description: "Family Fun Music and Dance Class Company! Our offerings include Mommy and Me classes, Ballerina for Little Tikes, and modern improv dance for the whole Fam!")
 jam_with_sam = Company.create(name:'Jam with Sam', description: "We are the wiggle monsters here to make you dance and sing the Abcs until the sunsets! Lets jam!")
+
+puts 'Company Admins'
+
+companies = [little_rockers, silly_sunflowers, jam_with_sam]
+
+companies.each do |company|
+          CompanyAdmin.create(name: company.name,
+                              username: company.name ,
+                              password: '123456',
+                              email: Faker::Internet.email,
+                              company_id: company.id )
+end
+
+
 
 
 
