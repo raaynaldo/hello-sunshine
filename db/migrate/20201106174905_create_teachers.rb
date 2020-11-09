@@ -6,6 +6,7 @@ class CreateTeachers < ActiveRecord::Migration[6.0]
       t.string :specialty
       t.string :hobbies
       t.string :website_link
+      t.string :picture
       t.string :email
       t.string :username
       t.string :password_digest
