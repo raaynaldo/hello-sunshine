@@ -1,6 +1,10 @@
 <div class="row">
     <h2><%= @course.title %></h2>
 </div>
+
+<div class="row">
+    <img src="<%= @course.picture %>" class="img-rounded img-responsive" alt="<%=@course.title %> Course ">
+</div>
 <div class="row">
     <div class="col">
         <%= @course.date_to_s %>

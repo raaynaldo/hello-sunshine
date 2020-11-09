@@ -52,7 +52,7 @@ puts "Teachers"
                      company_id: Company.all.sample.id,
                      specialty: ['music', 'dance', 'joybringing'].sample,
                      hobbies: ['songwriting', 'ballet', 'magic tricks', 'dancing like a silly monster'].sample,
-                     website_link: '',
+                     website_link: ['https://laurieberkner.com/', 'https://raffinews.com/', 'https://www.joanieleeds.com/'].sample,
                      username: Faker::Music::RockBand.name,
                      email: Faker::Internet.email,
                      password: '123456')
@@ -70,7 +70,7 @@ puts "Courses"
                    max_age: 7,
                    teacher_id: Teacher.all.sample.id,
                    location: ['zoom room', 'private zoom room', 'live'].sample,
-                   picture: '',
+                   picture: ['https://images.unsplash.com/photo-1504484656217-38f8ffc617f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaW', 'https://images.unsplash.com/photo-1577877777751-3f1ec20a0715?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1215&q=80', 'https://thumbs.dreamstime.com/b/table-top-view-decoration-kid-toys-develop-background-concept-flat-lay-accessories-baby-to-play-items-child-modern-155761164.jpg'].sample,
                    max_student: 15)
 end
 
