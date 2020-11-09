@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_154932) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_11_09_154932) do
     t.string "specialty"
     t.string "hobbies"
     t.string "website_link"
+    t.string "picture"
     t.string "email"
     t.string "username"
     t.string "password_digest"
