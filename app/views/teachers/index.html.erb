@@ -1,8 +1,11 @@
 <h1>Get to know the Teachers!</h1>
 
 
-<ul>
+<div>
 <% @teachers.each do |teacher|%>
+    <div><img src="<%= teacher.picture%>" class="img-rounded img-responsive teachers_image "alt="<%=teacher.name %>"></div>
     <div><li><%= link_to teacher.name, teacher_path(teacher.id)%></li></div>
 <% end %>
-</ul>
+</div>
+
+

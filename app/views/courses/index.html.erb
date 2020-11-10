@@ -1,7 +1,9 @@
 <h1>Course Index</h1>
 
-<ul>
+<div>
     <% @courses.each do |course| %>
-        <li><%= link_to course.title, course_path(course) %></li>
+       <div><img src="<%= course.picture %>" class="img-rounded img-responsive teachers_image" ></div>
+        <div><%= link_to course.title, course_path(course) %></div>
     <% end %>
-</ul>
+</div>
+

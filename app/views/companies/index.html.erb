@@ -1,10 +1,11 @@
 <h1>Check out the Companies!</h1>
 
-<ul>
+<div> 
 <% @companies.each do |company| %>
+   <div> <img src="<%= company.picture %>" class= "img-rounded img-responsive company_image"  alt="<%= company.name %>">
    <div> <li><%= link_to company.name, company_path(company.id)%> </li></div>
 <% end %>
-</ul>
+</div>
 
   
   <%# <div class="row">
