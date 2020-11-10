@@ -36,10 +36,7 @@ class SessionsController < ApplicationController
   end
 
   def render_view
-    if params[:type] == UserType.student
-      render :student_login
-    else
-      render :company_login
-    end
+    @type = params[:type]
+    render :login
   end
 end
