@@ -4,7 +4,7 @@ class Course < ApplicationRecord
     belongs_to :teacher
     
     validates :title, presence: true
-    validates :
+    
     def date_to_s
         self.date.strftime("%B %d, %Y")
     end
