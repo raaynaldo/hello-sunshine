@@ -16,7 +16,7 @@ class CompanyAdminsController < ApplicationController
       flash[:notice] = "Account created successfully!"
       redirect_to root_path
     else
-      byebug
+      
       # If user fails model validation - probably a bad password or duplicate email:
       flash.now.alert = "Oops, couldn't create account."
       render :new
