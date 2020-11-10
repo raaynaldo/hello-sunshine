@@ -5,10 +5,10 @@ class CompanyAdminsController < ApplicationController
   end
 
   def create
-    # byebug
     @company_admin = CompanyAdmin.new(company_admin_params)
     # store all emails in lowercase to avoid duplicates and case-sensitive login errors:
     @company_admin.email.downcase!
+    
     if @company_admin.save
       # If user saves in the db successfully:
       session[:user_id] = @company_admin.id
@@ -16,7 +16,6 @@ class CompanyAdminsController < ApplicationController
       flash[:notice] = "Account created successfully!"
       redirect_to root_path
     else
-      
       # If user fails model validation - probably a bad password or duplicate email:
       flash.now.alert = "Oops, couldn't create account."
       render :new

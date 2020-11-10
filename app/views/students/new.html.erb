@@ -1,1 +1,30 @@
-<h1>Student New</h1>
+<h1>Create Student</h1>
+<%= icon('fas', 'flag') %>
+<%= render partial: "shared/error_messages", locals: {object: @student} %>
+
+<%= form_with model: @student, class: "row", local: true do |f|%>
+    <div class= "col-6">
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :username %>
+            <%= f.search_field :username, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+            <small id="passwordHelp" class="form-text text-muted">Your password will be encrypted. Don't worry :)</small>
+        </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation, "Confirm Password" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+         <%= f.submit "Create User", class: "btn btn-primary" %>
+    </div>
+<% end %>

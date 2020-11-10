@@ -5,7 +5,7 @@
 <%= form_with model: @company_admin, class: "row", local: true do |f| %>
     <div class= "col-6">
         <div class="form-group">
-            <%= f.label :name, "Name" %>
+            <%= f.label :name %>
             <%= f.text_field :name, class: "form-control" %>
         </div>
         <div class="form-group">
@@ -19,11 +19,13 @@
         <div class="form-group">
             <%= f.label :password %>
             <%= f.password_field :password, class: "form-control" %>
+            <small id="passwordHelp" class="form-text text-muted">Your password will be encrypted. Don't worry :)</small>
         </div>
         <div class="form-group">
             <%= f.label :password_confirmation, "Confirm Password" %>
             <%= f.password_field :password_confirmation, class: "form-control" %>
         </div>
+         <%= f.submit "Create User", class: "btn btn-primary" %>
     </div>
     <div class= "col-6">
         <%= f.fields_for :company, @company_admin.company do |company_form| %>
@@ -37,5 +39,4 @@
             </div>
         <% end %>
     </div>
-    <%= f.submit "Create User", class: "btn btn-primary" %>
 <% end %>
