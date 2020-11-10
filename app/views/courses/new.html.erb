@@ -1,6 +1,56 @@
-<h1>Course New</h1>
+<h1>Course New <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-music-note-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+  <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+  <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+  <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+</svg></h1>
+
+<br>
+<%= form_with model: @course, local: true do |f| %>
+   <div class= "col-6">
+        <div class="form-group">
+            <%=f.label :title %>
+            <%=f.text_field :title, class: "form-control"  %>
+        </div>
+        <div class="form-group">
+            <%=f.label :course_type %>
+            <%=f.text_field :course_type, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%=f.label :date%>
+            <%=f.datetime_field :date, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%=f.label :price%>
+            <%=f.number_field :price, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%=f.label :min_age%>
+            <%=f.number_field :min_age, class: "form-control" %>
+        </div>
+        <div class="form-group">
+           <%=f.label :max_age%>
+           <%=f.number_field :max_age, class: "form-control" %>
+        </div>
+         <div class="form-group">
+           <%=f.label :max_student%>
+           <%=f.number_field :max_student, class: "form-control" %>
+         </div>
+         <div class="form-group">
+            <%=f.label :location%>
+            <%=f.text_field :location, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%=f.label :picture%>
+            <%=f.file_field :picture, class: "form-control" %> 
+        </div>
+         <%=f.hidden_field :company_id, current_user.company_id %>%
+    <%=f.submit 'Create Course',  class: "btn btn-primary" %>
+    </div>
+<% end %>
 
 
+<!--
 <%= form_with url: "/" do %>
     label : <%= label_tag :title %> <br>
     text_field : <%= text_field_tag :title %> <br>
@@ -30,6 +80,7 @@
 <% end %>
 
 <!-->
+<!--
 <h2>form_with using model</h2>
 <%= form_with( 
     model: @course, 
