@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'pry'
 
 Student.destroy_all
 Course.destroy_all
@@ -24,10 +25,11 @@ puts "Students"
 end
 
 puts 'Companies'
+#binding.pry
+little_rockers = Company.create(name:'Little Rockers', description: "Making big and little shake their sillies out till they can't no more!", picture: 'https://images.unsplash.com/photo-1602863211757-cfe6454947fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60')
+silly_sunflowers = Company.create(name:'Silly Sunflowers', description: "Family Fun Music and Dance Class Company! Our offerings include Mommy and Me classes, Ballerina for Little Tikes, and modern improv dance for the whole Fam!", picture: 'https://images.unsplash.com/photo-1502781252888-9143ba7f074e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60')
+jam_with_sam = Company.create(name:'Jam with Sam', description: "We are the wiggle monsters here to make you dance and sing the Abcs until the sunsets! Lets jam!", picture: 'https://images.unsplash.com/photo-1527236102507-6e5ac2692925?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60')
 
-little_rockers = Company.create(name:'Little Rockers', description: "Making big and little shake their sillies out till they can't no more!")
-silly_sunflowers = Company.create(name:'Silly Sunflowers', description: "Family Fun Music and Dance Class Company! Our offerings include Mommy and Me classes, Ballerina for Little Tikes, and modern improv dance for the whole Fam!")
-jam_with_sam = Company.create(name:'Jam with Sam', description: "We are the wiggle monsters here to make you dance and sing the Abcs until the sunsets! Lets jam!")
 
 puts 'Company Admins'
 
@@ -53,6 +55,11 @@ puts "Teachers"
                      specialty: ['music', 'dance', 'joybringing'].sample,
                      hobbies: ['songwriting', 'ballet', 'magic tricks', 'dancing like a silly monster'].sample,
                      website_link: ['https://laurieberkner.com/', 'https://raffinews.com/', 'https://www.joanieleeds.com/'].sample,
+                     picture: ['https://images.unsplash.com/photo-1578774296842-c45e472b3028?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60',
+                          'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60', 
+                          'https://images.unsplash.com/photo-1542103749-8ef59b94f47e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60', 
+                          'https://images.unsplash.com/photo-1591208333284-825682219525?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60', 
+                          'https://images.unsplash.com/photo-1595929287357-74f1d41d5a5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60'].sample,
                      username: Faker::Music::RockBand.name,
                      email: Faker::Internet.email,
                      password: '123456')
