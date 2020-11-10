@@ -1,5 +1,8 @@
 <h1>Create Company</h1>
-<%= form_with model: @company_admin, class: "row" do |f| %>
+
+<%= render partial: "shared/error_messages", locals: {object: @company_admin} %>
+
+<%= form_with model: @company_admin, class: "row", local: true do |f| %>
     <div class= "col-6">
         <div class="form-group">
             <%= f.label :name, "Name" %>
