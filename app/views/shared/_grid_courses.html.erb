@@ -3,7 +3,7 @@
         <div class="card bg-light">
             <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
             <div class="card-body">
-                <h5 class="card-title"><%= link_to course.title, course_path(course.id)%></h5>
+                <h5 class="card-title "><%= link_to course.title, course_path(course.id), class: 'purple card'  %></h5>
                 <p class="card-text">(ages 0-5)</p>
             </div>
         </div>

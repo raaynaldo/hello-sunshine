@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+    before_action :current_user_is_company?, only: [:new, :create]
+
     def index
         @courses = Course.all
     end
@@ -14,15 +16,41 @@ class CoursesController < ApplicationController
     end
     
     def create
+        @course = Course.new(course_params)
+
+        if @course.valid?
+            @course.save
+            redirect_to courses_path
+        else
+             flash.now.alert = "Oops, couldn't create a new course."
+            render :new
+        end
+
     end
 
     def edit
+        @course = Course.find(params[:id])
+        render :edit
     end
 
     def update
+        @course = Course.find(params[:id])
+        @course.update
+
+        if @course.valid? 
+            @course.save
+            redirect_to course_path
+        else
+            flash.now.alert = "Update failed"
+            render :edit
+        end
     end
 
     def destroy
+    end
+
+    def course_params
+         params.require(:course).permit(:title, :course_type, :date, :price, :min_age, :max_age, :max_student, :location, :picture, :teacher_id)
     end
 
     def register
@@ -34,5 +62,14 @@ class CoursesController < ApplicationController
         cr = CourseRegistration.where(course_id: params[:id], student_id: current_user.id).first
         cr.destroy
         redirect_to course_path(params[:id])
+    end
+
+    private
+
+    def current_user_is_company?
+        
+        if current_user == nil
+            redirect_to login_path(UserType.company_admin)
+        end
     end
 end

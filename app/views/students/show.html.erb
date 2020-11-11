@@ -1,11 +1,12 @@
 <h1>Student Profile</h1>
-
+<br>
 <h2>Hello! , <%= @student.name %></h2>
-<h4><%= @student.email %></h2>
+<h4><%= @student.email %></h4>
+<br>
 <%= button_to "Update Profile", edit_student_path, method: "get", class: "btn btn-primary" %>
-
+<br>
 <h2>Incoming Class</h2>
 <%= render partial: "/shared/grid_courses", locals: {courses: @student.incoming_courses} %>
-
+<br>
 <h2>Previous Class</h2>
 <%= render partial: "/shared/grid_courses", locals: {courses: @student.previous_courses} %>

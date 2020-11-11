@@ -30,6 +30,7 @@ body {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+ 
 }
 
 #footer {
@@ -38,7 +39,7 @@ body {
     bottom: 0px;
     left: 0px;
     width: 100%;
-    height:55px;
+    height:25px;
     border-top: 5px solid #000408;
     overflow: hidden;       
 }
@@ -70,4 +71,16 @@ a.link{
 
 .black {
     color: black;
+}
+
+.burntorange{
+  color: rgb(97, 76, 50);
+}
+
+.purple{
+  color: rgb(113, 45, 134);
+}
+
+.green {
+  color: rgb(128, 197, 128);
 }
