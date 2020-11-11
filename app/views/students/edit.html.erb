@@ -1,0 +1,16 @@
+<h1>Edit Student</h1>
+<%= render partial: "shared/error_messages", locals: {object: @student} %>
+
+<%= form_with model: @student, url: edit_student_path, class: "row", local: true do |f|%>
+    <div class= "col-6">
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control" %>
+        </div>
+         <%= f.submit "Update Profile", class: "btn btn-primary" %>
+    </div>
+<% end %>

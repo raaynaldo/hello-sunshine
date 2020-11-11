@@ -1,0 +1,11 @@
+<div class="grid">
+    <% courses.each do |course|  %>
+        <div class="card bg-light">
+            <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to course.title, course_path(course.id)%></h5>
+                <p class="card-text">(ages 0-5)</p>
+            </div>
+        </div>
+    <% end %>
+</div>

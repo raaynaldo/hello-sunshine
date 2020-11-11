@@ -34,7 +34,7 @@
       <% if current_user %>
         <% if current_type == UserType.student %>
           <li class="nav-item">
-            <%= link_to "Student Profile", student_path(current_user.id), class: "nav-link" %>
+            <%= link_to "Student Profile", student_path, class: "nav-link" %>
           </li>
         <% elsif current_type == UserType.company_admin %>
           <li class="nav-item">

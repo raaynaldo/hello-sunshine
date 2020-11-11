@@ -1,19 +1,5 @@
 class StudentsController < ApplicationController
-    def show
-        # check if the user is student
-        if current_type == UserType.student
-            # check if current user id same as parameter
-            if params[:id].to_i == current_user.id
-                @student = Student.find(params[:id])
-                render :show
-            else
-                # redirect to current student id
-                redirect_to student_path(current_user.id)
-            end
-        else
-            redirect_to root_path
-        end
-    end
+    before_action :current_user_is_student?, except: [:new, :create]
 
     def new
         @student = Student.new
@@ -37,8 +23,39 @@ class StudentsController < ApplicationController
         end
     end
 
+    def show
+        @student = Student.find(current_user.id)
+        render :show
+    end
+
+    def edit
+        @student = Student.find(current_user.id)
+        render :edit
+    end
+
+    def update
+        @student = Student.find(current_user.id)
+        @student.update(update_student_params)
+
+        if @student.save()
+            redirect_to student_path
+        else
+            flash.now.alert = "Update failed"
+            render :edit
+        end
+    end
+
     private
     def student_params
         params.require(:student).permit(:name, :email, :username, :password, :password_confirmation)
+    end
+
+    def update_student_params
+        params.require(:student).permit(:name, :email)
+    end
+
+    def current_user_is_student?
+        # redirect to homepage if current user not a studnet
+        return redirect_to root_path, alert: "Sorry, You don't have access" unless current_type == UserType.student
     end
 end
