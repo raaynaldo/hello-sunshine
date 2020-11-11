@@ -1,11 +1,13 @@
 <h1>Hello Teachers!</h1>
 
-
-<div>
-<% @teachers.each do |teacher|%>
-    <div><img src="<%= teacher.picture%>" class="img-rounded img-responsive teachers_image "alt="<%=teacher.name %>"></div>
-    <div><li><%= link_to teacher.name, teacher_path(teacher.id)%></li></div>
-<% end %>
+<div class="grid">
+    <% @teachers.each do |teacher|%>
+    <div class="card">
+         <img src="<%= teacher.picture%>" class="img-rounded img-responsive teachers_image "alt="<%=teacher.name %>">
+         <div class="card-body">
+         <%= link_to teacher.name, teacher_path(teacher.id)%>
+        </div>
+     </div>
+    <% end %>
 </div>
-
 
