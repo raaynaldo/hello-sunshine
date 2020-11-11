@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     helper_method :current_user
+    helper_method :current_type
 
     def current_user
         # UserType => from config/initializers/my_constants.rb
@@ -12,4 +13,7 @@ class ApplicationController < ActionController::Base
         @current_user
     end
     
+    def current_type
+        session[:type]
+    end
 end

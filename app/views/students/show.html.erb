@@ -1,0 +1,30 @@
+<h1>Student Profile</h1>
+
+<h2>Hello! , <%= @student.name %></h2>
+<h4><%= @student.email %></h2>
+
+<h2>Incoming Class</h2>
+<div class="grid">
+    <% @student.incoming_courses.each do |course| %>
+        <div class="card bg-light">
+            <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to course.title, course_path(course.id)%></h5>
+                <p class="card-text">(ages 0-5)</p>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<h2>Previous Class</h2>
+<div class="grid">
+    <% @student.previous_courses.each do |course| %>
+        <div class="card bg-light">
+            <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to course.title, course_path(course.id)%></h5>
+                <p class="card-text">(ages 0-5)</p>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -13,20 +13,16 @@
 </div>
 -->
 <br>
-<div class="row mx-md-n5">
+<div class="grid">
     <% @courses.each do |course|  %>
-    <div class="col px-md-5">
-        <div class="card bg-light" style="width: 18rem;">
+        <div class="card bg-light">
             <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
             <div class="card-body">
                 <h5 class="card-title"><%= link_to course.title, course_path(course.id)%></h5>
                 <p class="card-text">(ages 0-5)</p>
             </div>
         </div>
-    </div>
-   
     <% end %>
-
 </div>
 
 

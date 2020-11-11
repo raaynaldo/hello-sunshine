@@ -1,16 +1,16 @@
 <h1>Check out the Companies!</h1>
 <br>
-<div> 
-<% @companies.each do |company| %>
-<div class="card" style="width: 18rem;">
-  <img src="<%= company.picture %>" class="card-img-top" alt="<%= company.name %>">
-  <div class="card-body">
-    <h5 class="card-title"><%= company.name %></h5>
-    <p class="card-text"><%=company.description%></p>
-    <%= link_to company.name, company_path(company.id)%></a>
-  </div>
-</div>
-<% end %>
+<div class="grid"> 
+  <% @companies.each do |company| %>
+    <div class="card">
+      <img src="<%= company.picture %>" class="card-img-top" alt="<%= company.name %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= company.name %></h5>
+        <p class="card-text"><%=company.description%></p>
+        <%= link_to company.name, company_path(company.id)%></a>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

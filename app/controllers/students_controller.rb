@@ -1,4 +1,20 @@
 class StudentsController < ApplicationController
+    def show
+        # check if the user is student
+        if current_type == UserType.student
+            # check if current user id same as parameter
+            if params[:id].to_i == current_user.id
+                @student = Student.find(params[:id])
+                render :show
+            else
+                # redirect to current student id
+                redirect_to student_path(current_user.id)
+            end
+        else
+            redirect_to root_path
+        end
+    end
+
     def new
         @student = Student.new
     end

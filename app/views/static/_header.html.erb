@@ -32,6 +32,15 @@
         </li>
       <% end %>
       <% if current_user %>
+        <% if current_type == UserType.student %>
+          <li class="nav-item">
+            <%= link_to "Student Profile", student_path(current_user.id), class: "nav-link" %>
+          </li>
+        <% elsif current_type == UserType.company_admin %>
+          <li class="nav-item">
+            <%= link_to "Company Profile", company_path(current_user.id), class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to "Log Out", logout_path, method: "POST", class: "nav-link" %>
         </li>

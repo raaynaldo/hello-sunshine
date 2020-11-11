@@ -40,10 +40,10 @@
         location : <%= @course.location%>
     </div>
 </div>
-<% if current_user %>
+<% if current_user && current_type == UserType.student %>
     <div class="row">
         <div class="col">
-            <% if @course.students.exists?(current_user.id.to_i) && %>
+            <% if @course.students.exists?(current_user.id.to_i) %>
                 <%= button_to "Registered", course_register_path(@course.id), class: "btn btn-secondary", disabled: true%>
                 <%= button_to "Unregister", course_unregister_path(@course.id), method: "delete", class: "btn btn-danger"%>
             <% else %>
