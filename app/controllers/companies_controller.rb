@@ -35,10 +35,10 @@ class CompaniesController < ApplicationController
   end
 
   def current_user_is_company?
-    # redirect to company login page if no curent company
+    # redirect to company login page if no curent company.
     return redirect_to login_path(UserType.company_admin) unless current_type
 
-    # redirect to homepage if current user not a company
+    # redirect to homepage if current user is not a company_admin.
     return redirect_to root_path, alert: "Sorry, You don't have access" unless current_type == UserType.company_admin
   end
 end
