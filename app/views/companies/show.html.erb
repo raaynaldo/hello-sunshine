@@ -34,6 +34,14 @@ Teachers
       <div class="grid-children">
         <img src="<%= teacher.picture %>" class="img-fluid rounded-circle" alt="<%= teacher.name%>">
         <%= link_to teacher.name, teacher_path(teacher.id)%>
+        <% if !!current_user && current_user.id == @company.id %> 
+          <%= button_to edit_teacher_path(teacher.id), method: "get", class: "btn btn-success" do %> 
+            <i class="fas fa-pencil-alt"></i> Edit Teacher 
+          <% end %>
+          <%= button_to teacher_path(teacher.id), method: "delete", class: "btn btn-danger" do %> 
+            <i class="fas fa-times"></i> Delete Teacher 
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -64,8 +72,8 @@ Courses
                 <%= button_to edit_course_path(course.id), method: "get", class: "btn btn-success" do %> 
                   <i class="fas fa-pencil-alt"></i> Edit Course 
                 <% end %>
-                 <%= button_to course_path(course.id), method: "delete", class: "btn btn-primary" do %> 
-                  <i class="fas fa-pencil-alt"></i> Delete Course 
+                <%= button_to course_path(course.id), method: "delete", class: "btn btn-danger" do %> 
+                  <i class="fas fa-times"></i> Delete Course 
                 <% end %>
               <% end %>
             </div>

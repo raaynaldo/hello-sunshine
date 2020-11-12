@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
     def current_type
         session[:type]
     end
+
+    def was_successful(str)
+        flash.now.notice = "#{str.capitalize} wassuccessful"
+    end
+
+    def was_failed(str)
+        flash.now.alert = "#{str.capitalize} was failed"
+    end
 end

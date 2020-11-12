@@ -1,7 +1,7 @@
 class Teacher < ApplicationRecord
     # has_secure_password
     belongs_to :company
-    has_many :courses
+    has_many :courses, :dependent => :restrict_with_error
 
     validates :name, presence: true
 

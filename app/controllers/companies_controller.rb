@@ -18,10 +18,10 @@ class CompaniesController < ApplicationController
     @company.update(company_params)
 
     if @company.save
-        flash.now.notice = "Update succeeded"
-        render :show
+      was_successful("update")
+      render :show
     else
-      flash.now.alert = "Update failed"
+      was_failed("update")
       render :edit
     end
   end
@@ -30,6 +30,7 @@ class CompaniesController < ApplicationController
   end
 
   private
+
   def company_params
     params.require(:company).permit(:name, :description)
   end

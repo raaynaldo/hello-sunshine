@@ -17,7 +17,7 @@ class TeachersController < ApplicationController
         @teacher = Teacher.new(teacher_params)
         
         if @teacher.save
-            flash.now.notice = "Create succeeded"
+            # flash.now.notice = "Create succeeded"
             redirect_to company_path(@teacher.company_id)
         else
             flash.now.alert = "Create failed"
@@ -34,15 +34,21 @@ class TeachersController < ApplicationController
         @teacher = Teacher.find(params[:id])
         
         if @teacher.update(teacher_params)
-            flash.now.notice = "Update succeeded"
-            render :show
+            # was_successful("update")
+            redirect_to company_path(@teacher.company_id)
         else
-            flash.now.alert = "Update failed"
+            was_failed("update")
             render :new
         end
     end
 
     def destroy
+        teacher = Teacher.find(params[:id])
+        if !teacher.destroy
+            flash.now.alert = "Can't delete #{teacher.name} becaue the teacher has some courses."
+        end
+        @company = teacher.company
+        render "/companies/show"
     end
 
     private

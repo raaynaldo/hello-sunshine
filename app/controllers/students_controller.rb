@@ -37,10 +37,10 @@ class StudentsController < ApplicationController
         @student = Student.find(current_user.id)
 
         if @student.update(update_student_params)
-            flash.now.notice = "Update succeeded"
+            was_successful("update")
             render :show
         else
-            flash.now.alert = "Update failed"
+            was_failed("update")
             render :edit
         end
     end
