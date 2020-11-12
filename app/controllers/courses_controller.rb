@@ -2,7 +2,12 @@ class CoursesController < ApplicationController
     before_action :current_user_is_company?, only: [:new, :create]
 
     def index
-        @courses = Course.all
+        if !!params[:title]
+            @courses = Course.where("title LIKE ? ", "%#{params[:title]}%")
+        else
+            @courses = Course.all
+        end
+        render :index
     end
 
     def show
@@ -52,7 +57,7 @@ class CoursesController < ApplicationController
     end
 
     def course_params
-         params.require(:course).permit(:title, :course_type, :date, :price, :min_age, :max_age, :max_student, :location, :picture, :teacher_id)
+         params.require(:course).permit(:title, :course_type, :date, :price, :min_age, :max_age, :max_student, :location, :picture, :teacher_id, :search)
     end
 
     def register
