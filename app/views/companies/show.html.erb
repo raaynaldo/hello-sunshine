@@ -67,6 +67,7 @@ Courses
             <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
             <div class="card-body">
               <h5 class="card-title "><%= link_to course.title, course_path(course.id), class: 'purple'  %></h5>
+              <p class="card-text"><%= link_to course.teacher.name, teacher_path(course.teacher_id)%></p>
               <p class="card-text">(ages 0-5)</p>
               <% if !!current_user && current_user.id == @company.id %> 
                 <%= button_to edit_course_path(course.id), method: "get", class: "btn btn-success" do %> 
