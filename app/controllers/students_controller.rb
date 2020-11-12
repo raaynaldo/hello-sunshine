@@ -35,10 +35,10 @@ class StudentsController < ApplicationController
 
     def update
         @student = Student.find(current_user.id)
-        @student.update(update_student_params)
 
-        if @student.save()
-            redirect_to student_path
+        if @student.update(update_student_params)
+            flash.now.notice = "Update succeeded"
+            render :show
         else
             flash.now.alert = "Update failed"
             render :edit
@@ -55,6 +55,9 @@ class StudentsController < ApplicationController
     end
 
     def current_user_is_student?
+        # redirect to student login page if no curent user
+        return redirect_to login_path(UserType.student) unless current_type
+        
         # redirect to homepage if current user not a studnet
         return redirect_to root_path, alert: "Sorry, You don't have access" unless current_type == UserType.student
     end

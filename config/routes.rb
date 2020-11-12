@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "/logout", to: "sessions#destroy"
 
   resources :company_admins
-  resources :companies
+  resources :companies, only: [:index, :show]
   resources :teachers
   resources :courses
   resources :students, only: [:new, :create]
@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get "/students/profile", to: "students#show", as: "student"
   get "/students/profile/edit", to: "students#edit", as: "edit_student"
   patch "/students/profile/edit", to: "students#update"
+
+  get "/companies/profile/edit", to: "companies#edit", as: "edit_company"
+  patch "/companies/profile/edit", to: "companies#update"
 
   post "courses/register/:id", to: "courses#register", as: "course_register"
   delete "courses/unregister/:id", to: "courses#unregister", as: "course_unregister"
