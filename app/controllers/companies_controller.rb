@@ -15,8 +15,11 @@ class CompaniesController < ApplicationController
 
   def update
     @company = Company.find(current_user.company_id)
-    @company.update(company_params)
-
+    if company_params[:picture]
+        @company.picture.purge
+        @company.picture.attach(params[:picture])
+        @company.update(company_params)
+    end
     if @company.save
       was_successful("update")
       render :show
@@ -32,7 +35,7 @@ class CompaniesController < ApplicationController
   private
 
   def company_params
-    params.require(:company).permit(:name, :description)
+    params.require(:company).permit(:name, :description, :picture)
   end
 
   def current_user_is_company?

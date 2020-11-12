@@ -3,7 +3,13 @@
 <div class="grid"> 
   <% @companies.each do |company| %>
     <div class="card">
-      <img src="<%= company.picture %>" class="card-img-top" alt="<%= company.name %>">
+      <% if !!company.picture_link %>
+        <img src="<%= company.picture_link %>" class="card-img-top" alt="<%= company.name %>">
+      <% else %>
+        <% if company.picture.attached? %>
+          <img src="<%= url_for(company.picture) %>" class="card-img-top" alt="<%= company.name %>">
+        <% end %>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= company.name %></h5>
         <p class="card-text"><%=company.description%></p>

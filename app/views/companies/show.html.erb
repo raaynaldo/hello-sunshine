@@ -2,7 +2,13 @@
 
 <div class="row">
   <div class="col-6">
-    <img src="<%= @company.picture %>" class="img-fluid rounded" alt="<%=@company.name %>">
+    <% if !!@company.picture_link %>
+      <img src="<%= @company.picture_link %>" class="img-fluid rounded" alt="<%=@company.name %>">
+    <% else %>
+      <% if @company.picture.attached? %>
+        <img src="<%= url_for(@company.picture) %>" class="img-fluid rounded" alt="<%=@company.name %>">
+      <% end %>
+    <% end %>
   </div>
   <div class="col-6">
     <h4> 

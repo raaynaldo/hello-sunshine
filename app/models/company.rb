@@ -1,7 +1,8 @@
 class Company < ApplicationRecord
   has_many :teachers
   has_many :company_admins
-
+  has_one_attached :picture
+  
   validates :name, presence: true, uniqueness: true
 
   def courses
