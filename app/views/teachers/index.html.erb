@@ -2,7 +2,7 @@
 
 <div class="grid">
     <% @teachers.each do |teacher|%>
-    <div class="card">
+    <div class="card bg-light border-warning mb-3">
          <img src="<%= teacher.picture%>" class="card-img-top img-responsive teachers_image "alt="<%=teacher.name %>">
          <div class="card-body">
          <%= link_to teacher.name,  teacher_path(teacher.id), class: 'burntorange'%>
