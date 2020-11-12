@@ -16,4 +16,15 @@ class Course < ApplicationRecord
     def company
         self.teacher.company
     end
+
+    # def self.search(search)
+    #     if search
+    #         course = Course.find_by(name: search)
+    #         if course
+    #             self.where(course_id: course)
+    #         else
+    #             Course.all
+    #         end
+    #     end
+    # end
 end
