@@ -1,4 +1,11 @@
-<h1>Create Teacher</h1>
+<h1>
+    <% if @teacher.id == 0 %>
+        Create Teacher
+    <% else %>
+        Update Teacher
+    <% end %>
+</h1>
+
 <%= render partial: "shared/error_messages", locals: {object: @teacher} %>
 
 <%= form_with model: @teacher, class: "row", local: true do |f|%>
@@ -26,6 +33,10 @@
             <%=f.file_field :picture, class: "form-control" %> 
         </div>
         -->
-         <%= f.submit "Create User", class: "btn btn-primary" %>
+        <% if @teacher.id == 0 %>
+            <%= f.submit "Create User", class: "btn btn-primary" %>
+        <% else %>
+            <%= f.submit "Update User", class: "btn btn-primary" %>
+        <% end %>
     </div>
 <% end %>

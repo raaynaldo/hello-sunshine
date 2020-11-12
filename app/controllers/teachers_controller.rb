@@ -1,4 +1,6 @@
 class TeachersController < ApplicationController
+  before_action :current_user_is_teacher?, only: [:edit, :update]
+
     def index
         @teachers = Teacher.all
     end
@@ -25,7 +27,7 @@ class TeachersController < ApplicationController
 
     def edit
         @teacher = Teacher.find(params[:id])
-        render :edit
+        render :new
     end
 
     def update
@@ -36,7 +38,7 @@ class TeachersController < ApplicationController
             render :show
         else
             flash.now.alert = "Update failed"
-            render :edit
+            render :new
         end
     end
 
@@ -53,6 +55,7 @@ class TeachersController < ApplicationController
         return redirect_to login_path(UserType.teacher) unless current_type
     
         # redirect to homepage if current user not a teacher
-        return redirect_to root_path, alert: "Sorry, You don't have access" unless current_type == UserType.company_admin
+        teacher = Teacher.find(params[:id])
+        return redirect_to root_path, alert: "Sorry, You don't have access" unless current_type == UserType.company_admin && current_user.company_id == teacher.company_id
       end
 end
