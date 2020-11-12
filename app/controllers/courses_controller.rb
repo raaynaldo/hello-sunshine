@@ -34,11 +34,11 @@ class CoursesController < ApplicationController
 
     def update
         @course = Course.find(params[:id])
-        @course.update
+        @course.update(course_params)
 
         if @course.valid? 
             @course.save
-            redirect_to course_path
+            redirect_to company_path(@course.company.id)
         else
             flash.now.alert = "Update failed"
             render :edit
@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
 
     def destroy
         @delete_course = Course.find(params[:id])
-        @delete_course.delete
+        @delete_course.destroy
         redirect_to company_path(@delete_course.company.id)
     end
 
