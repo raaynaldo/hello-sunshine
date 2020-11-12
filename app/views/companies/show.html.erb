@@ -61,8 +61,11 @@ Courses
               <h5 class="card-title "><%= link_to course.title, course_path(course.id), class: 'purple'  %></h5>
               <p class="card-text">(ages 0-5)</p>
               <% if !!current_user && current_user.id == @company.id %> 
-                <%= button_to edit_course_path, method: "get", class: "btn btn-success" do %> 
+                <%= button_to edit_course_path(course.id), method: "get", class: "btn btn-success" do %> 
                   <i class="fas fa-pencil-alt"></i> Edit Course 
+                <% end %>
+                 <%= button_to course_path(course.id), method: "delete", class: "btn btn-primary" do %> 
+                  <i class="fas fa-pencil-alt"></i> Delete Course 
                 <% end %>
               <% end %>
             </div>

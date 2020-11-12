@@ -12,4 +12,8 @@ class Course < ApplicationRecord
     def date_to_s
         self.date.strftime("%B %d, %Y")
     end
+
+    def company
+        self.teacher.company
+    end
 end

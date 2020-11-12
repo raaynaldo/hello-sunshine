@@ -6,7 +6,6 @@ class CoursesController < ApplicationController
     end
 
     def show
-     
         @course = Course.find(params[:id])
            #byebug
     end
@@ -20,7 +19,7 @@ class CoursesController < ApplicationController
 
         if @course.valid?
             @course.save
-            redirect_to courses_path
+            redirect_to company_path(@course.company.id)
         else
              flash.now.alert = "Oops, couldn't create a new course."
             render :new
@@ -47,6 +46,9 @@ class CoursesController < ApplicationController
     end
 
     def destroy
+        @delete_course = Course.find(params[:id])
+        @delete_course.delete
+        redirect_to company_path(@delete_course.company.id)
     end
 
     def course_params
