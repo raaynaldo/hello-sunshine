@@ -1,0 +1,21 @@
+<div class="grid">
+    <% courses.each do |course|  %>
+        <div class="card bg-light">
+            <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
+            <div class="card-body">
+              <h5 class="card-title "><%= link_to course.title, course_path(course.id), class: 'purple'  %></h5>
+              <p class="card-text"><%= link_to course.teacher.name, teacher_path(course.teacher_id)%></p>
+              <p class="card-text"><%= course.course_type.capitalize %> Course</p>
+              <p class="card-text">(ages <%= "#{course.min_age} - #{course.max_age}"  %>)</p>
+              <% if !!current_user && current_user.id == @company.id && incoming_class %> 
+                <%= button_to edit_course_path(course.id), method: "get", class: "btn btn-success" do %> 
+                  <i class="fas fa-pencil-alt"></i> Edit Course 
+                <% end %>
+                <%= button_to course_path(course.id), method: "delete", class: "btn btn-danger" do %> 
+                  <i class="fas fa-times"></i> Delete Course 
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+    <% end %>
+  </div>

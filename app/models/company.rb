@@ -11,4 +11,20 @@ class Company < ApplicationRecord
     }
     courses_arr
   end
+
+  def previous_courses
+    courses_arr = []
+    self.teachers.each{ |teacher|
+        courses_arr = courses_arr + teacher.previous_courses
+    }
+    courses_arr
+  end
+
+  def incoming_courses
+    courses_arr = []
+    self.teachers.each{ |teacher|
+        courses_arr = courses_arr + teacher.incoming_courses
+    }
+    courses_arr
+  end
 end

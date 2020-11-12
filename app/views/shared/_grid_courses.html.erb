@@ -4,7 +4,8 @@
             <img src="<%= course.picture %>" class="card-img-top img-responsive " alt="<%= course.title %>">
             <div class="card-body">
                 <h5 class="card-title "><%= link_to course.title, course_path(course.id), class: 'purple'  %></h5>
-                <p class="card-text">(ages 0-5)</p>
+                <p class="card-text"><%= course.course_type.capitalize %> Course</p>
+                <p class="card-text">(ages <%= "#{course.min_age} - #{course.max_age}"  %>)</p>
             </div>
         </div>
     <% end %>

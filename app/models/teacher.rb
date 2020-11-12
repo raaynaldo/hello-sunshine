@@ -8,4 +8,12 @@ class Teacher < ApplicationRecord
     def self.find_by_company(company_id)
         Teacher.where(company_id: company_id)
     end
+
+    def incoming_courses
+        self.courses.where("date(date) >= date('now')")
+    end
+
+    def previous_courses
+        self.courses.where("date(date) < date('now')")
+    end
 end
