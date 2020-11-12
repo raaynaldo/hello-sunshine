@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
     end
 
     def was_successful(str)
-        flash.now.notice = "#{str.capitalize} wassuccessful"
+        flash.now.notice = "#{str.capitalize} was successful."
     end
 
     def was_failed(str)
-        flash.now.alert = "#{str.capitalize} was failed"
+        flash.now.alert = "#{str.capitalize} was failed."
     end
 end
