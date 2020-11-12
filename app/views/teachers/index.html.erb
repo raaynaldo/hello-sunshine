@@ -2,12 +2,12 @@
 
 <div class="grid">
     <% @teachers.each do |teacher|%>
-    <div class="card">
-         <img src="<%= teacher.picture%>" class="img-rounded img-responsive teachers_image "alt="<%=teacher.name %>">
-         <div class="card-body">
-         <%= link_to teacher.name, teacher_path(teacher.id)%>
+        <div class="card">
+            <img src="<%= teacher.picture%>" class="img-rounded img-responsive teachers_image "alt="<%=teacher.name %>">
+            <div class="card-body">
+            <%= link_to teacher.name, teacher_path(teacher.id)%>
+            </div>
         </div>
-     </div>
     <% end %>
 </div>
 
