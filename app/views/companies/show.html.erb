@@ -29,7 +29,7 @@
 <h2>
 Teachers 
 <% if !!current_user && current_user.id == @company.id %>
-  <%= button_to new_teacher_path, method: "get", class: "btn btn-primary" do %> 
+  <%= button_to new_teacher_path, method: "get", class: "btn btn-warning" do %> 
     <i class="fas fa-plus"></i> Add Teacher 
   <% end %>
 <% end %>
@@ -41,10 +41,10 @@ Teachers
         <img src="<%= teacher.picture %>" class="img-fluid rounded-circle" alt="<%= teacher.name%>">
         <%= link_to teacher.name, teacher_path(teacher.id)%>
         <% if !!current_user && current_user.id == @company.id %> 
-          <%= button_to edit_teacher_path(teacher.id), method: "get", class: "btn btn-success" do %> 
+          <%= button_to edit_teacher_path(teacher.id), method: "get", class: "btn btn-warning" do %> 
             <i class="fas fa-pencil-alt"></i> Edit Teacher 
           <% end %>
-          <%= button_to teacher_path(teacher.id), method: "delete", class: "btn btn-danger" do %> 
+          <%= button_to teacher_path(teacher.id), method: "delete", class: "btn btn-light" do %> 
             <i class="fas fa-times"></i> Delete Teacher 
           <% end %>
         <% end %>
