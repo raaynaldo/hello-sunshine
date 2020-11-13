@@ -15,7 +15,7 @@ class TeachersController < ApplicationController
     
     def create
         @teacher = Teacher.new(teacher_params)
-        if teacher_params[:picture]
+        if !!teacher_params[:picture]
             @teacher.picture.attach(params[:picture])
         end
         if @teacher.save
@@ -34,7 +34,7 @@ class TeachersController < ApplicationController
 
     def update
         @teacher = Teacher.find(params[:id])
-        if teacher_params[:picture]
+        if !!teacher_params[:picture]
             @teacher.picture.purge
             @teacher.picture.attach(params[:picture])
         end

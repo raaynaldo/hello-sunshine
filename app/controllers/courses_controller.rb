@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
     
     def create
         @course = Course.new(course_params)
-        if course_params[:picture]
+        if !!course_params[:picture]
             @course.picture.attach(params[:picture])
         end
         if @course.valid?
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
 
     def update
         @course = Course.find(params[:id])
-        if course_params[:picture]
+        if !!course_params[:picture]
             @course.picture.purge
             @course.picture.attach(params[:picture])
         end
