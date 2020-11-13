@@ -1,5 +1,5 @@
 class Teacher < ApplicationRecord
-  # has_secure_password
+  has_secure_password
   belongs_to :company
   has_many :courses, :dependent => :restrict_with_error
   has_one_attached :picture
