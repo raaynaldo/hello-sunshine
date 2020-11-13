@@ -1,8 +1,13 @@
 
 <h1> Meet <%= @teacher.name %> ! </h1>
 <br>
-
- <img src="<%= @teacher.picture %>" class="img-rounded img-responsive teachers_image " alt="<%=@teacher.name %>">
+    <% if !!@teacher.picture_link %>
+        <img src="<%= @teacher.picture_link %>" class="img-rounded img-responsive teachers_image " alt="<%=@teacher.name %>">
+    <% else %>
+      <% if @teacher.picture.attached? %>
+        <img src="<%= url_for(@teacher.picture) %>" class="img-rounded img-responsive teachers_image " alt="<%=@teacher.name %>">
+      <% end %>
+    <% end %>
 <br>
 <br>
 <h6><%= @teacher.name%> hobbies: <%= @teacher.hobbies%>!</div></h6>

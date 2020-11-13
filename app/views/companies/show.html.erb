@@ -38,7 +38,13 @@ Teachers
   <div class="grid">
     <% @company.teachers.each do |teacher| %>
       <div class="grid-children">
-        <img src="<%= teacher.picture %>" class="img-fluid rounded-circle" alt="<%= teacher.name%>">
+        <% if !!teacher.picture_link %>
+          <img src="<%= teacher.picture_link %>" class="img-fluid rounded-circle" alt="<%= teacher.name%>">
+        <% else %>
+          <% if teacher.picture.attached? %>
+              <img src="<%= url_for(teacher.picture) %>" class="img-fluid rounded-circle" alt="<%= teacher.name%>">
+          <% end %>
+        <% end %>
         <%= link_to teacher.name, teacher_path(teacher.id)%>
         <% if !!current_user && current_user.id == @company.id %> 
           <%= button_to edit_teacher_path(teacher.id), method: "get", class: "btn btn-warning" do %> 

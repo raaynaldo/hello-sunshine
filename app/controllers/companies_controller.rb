@@ -18,9 +18,8 @@ class CompaniesController < ApplicationController
     if company_params[:picture]
         @company.picture.purge
         @company.picture.attach(params[:picture])
-        @company.update(company_params)
     end
-    if @company.save
+    if @company.update(company_params)
       was_successful("update")
       render :show
     else

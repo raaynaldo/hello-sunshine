@@ -15,7 +15,9 @@ class TeachersController < ApplicationController
     
     def create
         @teacher = Teacher.new(teacher_params)
-        
+        if teacher_params[:picture]
+            @teacher.picture.attach(params[:picture])
+        end
         if @teacher.save
             # flash.now.notice = "Create succeeded"
             redirect_to company_path(@teacher.company_id)
@@ -32,7 +34,10 @@ class TeachersController < ApplicationController
 
     def update
         @teacher = Teacher.find(params[:id])
-        
+        if teacher_params[:picture]
+            @teacher.picture.purge
+            @teacher.picture.attach(params[:picture])
+        end
         if @teacher.update(teacher_params)
             # was_successful("update")
             redirect_to company_path(@teacher.company_id)
@@ -53,7 +58,7 @@ class TeachersController < ApplicationController
 
     private
     def teacher_params
-        params.require(:teacher).permit(:name, :specialty, :hobbies, :website_link, :company_id)
+        params.require(:teacher).permit(:name, :specialty, :hobbies, :website_link, :company_id, :picture)
     end
 
     def current_user_is_teacher?

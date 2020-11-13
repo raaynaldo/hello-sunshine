@@ -3,9 +3,15 @@
 <div class="grid">
     <% @teachers.each do |teacher|%>
     <div class="card">
-         <img src="<%= teacher.picture%>" class="card-img-top img-responsive teachers_image "alt="<%=teacher.name %>">
-         <div class="card-body">
-         <%= link_to teacher.name,  teacher_path(teacher.id), class: 'burntorange'%>
+        <% if !!teacher.picture_link %>
+            <img src="<%= teacher.picture_link%>" class="card-img-top img-responsive teachers_image "alt="<%=teacher.name %>">
+        <% else %>
+            <% if teacher.picture.attached? %>
+                <img src="<%= url_for(teacher.picture)%>" class="card-img-top img-responsive teachers_image "alt="<%=teacher.name %>">
+            <% end %>
+        <% end %>
+        <div class="card-body">
+        <%= link_to teacher.name,  teacher_path(teacher.id), class: 'burntorange'%>
         </div>
     </div>
     <% end %>
