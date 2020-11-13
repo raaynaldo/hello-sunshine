@@ -3,7 +3,13 @@
 </div>
 
 <div class="row">
-    <img src="<%= @course.picture %>" class="img-rounded img-responsive courses_image" alt="<%=@course.title %> Course ">
+    <% if !!@course.picture_link %>
+        <img src="<%= @course.picture_link %>" class="img-rounded img-responsive courses_image" alt="<%=@course.title %> Course ">
+    <% else %>
+        <% if @course.picture.attached? %>
+            <img src="<%= url_for(@course.picture) %>" class="img-rounded img-responsive courses_image" alt="<%=@course.title %> Course ">
+        <% end %>
+    <% end %>  
 </div>
 <div class="row">
     <div class="col">

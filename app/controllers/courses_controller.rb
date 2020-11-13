@@ -2,51 +2,58 @@ class CoursesController < ApplicationController
     before_action :current_user_is_company?, only: [:new, :create]
 
     def index
-        if !!params[:title]
-            @courses = Course.where("title LIKE ? ", "%#{params[:title]}%")
-        else
-            @courses = Course.all
+        @courses = Course.incoming_courses
+        if !!params[:title] && params[:title] != ""
+            @courses = @courses.where("title LIKE ? ", "%#{params[:title]}%")
+        end
+        if !!params[:title] && params[:course_type] != ""
+            @courses = @courses.where(course_type: params[:course_type])
         end
         render :index
     end
 
     def show
         @course = Course.find(params[:id])
-           #byebug
+        render :show
     end
 
     def new
         @course = Course.new
+        render :new
     end
     
     def create
         @course = Course.new(course_params)
-
+        if course_params[:picture]
+            @course.picture.attach(params[:picture])
+        end
         if @course.valid?
             @course.save
             redirect_to company_path(@course.company.id)
         else
-             flash.now.alert = "Oops, couldn't create a new course."
+            flash.now.alert = "Oops, couldn't create a new course."
             render :new
         end
-
     end
 
     def edit
         @course = Course.find(params[:id])
-        render :edit
+        render :new
     end
 
     def update
         @course = Course.find(params[:id])
+        if course_params[:picture]
+            @course.picture.purge
+            @course.picture.attach(params[:picture])
+        end
         @course.update(course_params)
-
         if @course.valid? 
             @course.save
             redirect_to company_path(@course.company.id)
         else
             flash.now.alert = "Update failed"
-            render :edit
+            render :new
         end
     end
 

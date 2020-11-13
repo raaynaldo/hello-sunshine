@@ -2,6 +2,7 @@ class Course < ApplicationRecord
     has_many :course_registrations, :dependent => :destroy
     has_many :students, through: :course_registrations
     belongs_to :teacher
+    has_one_attached :picture
     
     validates :title, presence: true
     validates :price, presence: true
@@ -17,14 +18,7 @@ class Course < ApplicationRecord
         self.teacher.company
     end
 
-    # def self.search(search)
-    #     if search
-    #         course = Course.find_by(name: search)
-    #         if course
-    #             self.where(course_id: course)
-    #         else
-    #             Course.all
-    #         end
-    #     end
-    # end
+    def self.incoming_courses
+        self.where("date(date) >= date('now')")
+    end
 end
