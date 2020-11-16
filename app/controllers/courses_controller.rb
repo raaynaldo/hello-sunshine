@@ -19,15 +19,15 @@ class CoursesController < ApplicationController
 
     def new
         @course = Course.new
+        @course.date = DateTime.now
+        byebug
         render :new
     end
     
     def create
         @course = Course.new(course_params)
-        if course_params[:picture]
-            @course.picture.attach(params[:picture])
-        end
         if @course.valid?
+            @course.picture.attach(params[:course][:picture])
             @course.save
             redirect_to company_path(@course.company.id)
         else
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
 
     def update
         @course = Course.find(params[:id])
-        if course_params[:picture]
+        if !!course_params[:picture]
             @course.picture.purge
             @course.picture.attach(params[:picture])
         end

@@ -10,6 +10,11 @@ class Course < ApplicationRecord
     validates :max_age, numericality: {greater_than: :min_age, less_than_or_equal_to: 14 }, presence: true
     validates :max_student, numericality: {less_than_or_equal_to: 15}
 
+    def initialize(*args)
+        super
+        self.date = DateTime.now
+    end
+    
     def date_to_s
         self.date.strftime("%B %d, %Y")
     end

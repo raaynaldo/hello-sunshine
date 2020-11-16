@@ -75,7 +75,7 @@ course_title = ["Living on Sunshine sillies", "Rock and Roll Babies", "Sams Jam 
 count = 0
 5.times do
   Course.create(title: course_title[count],
-                course_type: ["music", "dancing"].sample,
+                course_type: ["Music", "Dance"].sample,
                 date: DateTime.now,
                 price: 10,
                 min_age: [0, 1, 2, 3, 4, 5, 6, 7].sample,
