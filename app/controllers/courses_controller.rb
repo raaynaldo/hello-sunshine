@@ -20,7 +20,6 @@ class CoursesController < ApplicationController
     def new
         @course = Course.new
         @course.date = DateTime.now
-        byebug
         render :new
     end
     
